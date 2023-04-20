@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Designer</title>
+    <style>
+      /* Styles for the head section */
+      .head {
+        background-color: #ccffcc;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+      }
+
+      /* Styles for the design bar section */
+      .design-bar {
+        background-color: #006600;
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+      }
+
+      .design-bar button {
+        margin-right: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Styles for the text box section */
+      .text-box {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+      }
+
+      .text-box textarea {
+        width: 100%;
+        height: 400px;
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+    </style>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <!-- Head section -->
+    <div class="head">
+      Text Designer
+    </div>
+
+    <!-- Design bar section -->
+<div class="design-bar">
+  <button class="font-button">Font</button>
+  <button class="color-button">Color</button>
+  <div class="color-dropdown">
+    <button class="dropdown-button">Red</button>
+    <button class="dropdown-button">Green</button>
+    <button class="dropdown-button">Blue</button>
+  </div>
+  <button class="bold-button">Bold</button>
+  <button class="italic-button">Italic</button>
+  <button class="underline-button">Underline</button>
+  <button class="reset-design-button">Reset Design</button>
+  <button class="reset-all-button">Reset All</button>
+  <button class="copy-picture-button">Copy Picture</button>
+</div>
+
+    <!-- Text box section -->
+    </div>
+    <table>
+      <tr>
+        <td class="text-box" contenteditable>
+          Write at least 1500 words
+        </td>
+      </tr>
+    </table>
+
+    <!-- JavaScript code -->
+    <script src="text-designer.js">
+  <script>
+  const copyPictureButton = document.querySelector(".copy-picture-button");
+  const textBox = document.querySelector(".text-box");
+
+  copyPictureButton.addEventListener("click", () => {
+    html2canvas(textBox).then(canvas => {
+      const image = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.download = "text-box.png";
+      link.href = image;
+      link.click();
+    });
+  });
+  </script>
+  </body>
+</html>
